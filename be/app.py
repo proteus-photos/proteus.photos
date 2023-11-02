@@ -1,41 +1,45 @@
-from fastapi import FastAPI, File, UploadFile
+import logging
+
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from PIL import Image, ImageFile
-from pydantic import BaseModel
-from fastapi.responses import JSONResponse
-from starlette.middleware.cors import CORSMiddleware
+from dataclasses import dataclass
 import io
 
 from utils import apply_phashes
-from constants import ORIGINS
 
 # https://github.com/python-pillow/Pillow/issues/1510
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
-app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app = Flask(__name__)
+CORS(app)
 
 
-class PerceptualHashes(BaseModel):
+@dataclass
+class PerceptualHashes:
     blockhash: str
     neuralhash: str
     colourhash: str
 
 
-@app.post("/process_image/", response_model=PerceptualHashes)
-async def process_image(file: UploadFile = File(...)):
-    try:
-        # Read image file
-        image_data = await file.read()
-        image = Image.open(io.BytesIO(image_data))
-        # Apply phashes
-        perceptual_hashes_for_image = apply_phashes(image)
-        return perceptual_hashes_for_image
-    except Exception as e:
-        return JSONResponse(content={"error": str(e)}, status_code=400)
+@app.route("/process_image", methods=["POST"])
+def process_image():
+    if "file" not in request.files:
+        return jsonify(error="No file part"), 400
+    file = request.files["file"]
+    if file.filename == "":
+        return jsonify(error="No selected file"), 400
+    if file:
+        try:
+            image_data = file.read()
+            image = Image.open(io.BytesIO(image_data))
+            hashes = apply_phashes(image)
+            # Validate output with dataclass
+            perceptual_hashes_for_image = PerceptualHashes(**hashes)
+            return jsonify(perceptual_hashes_for_image.__dict__)
+        except Exception as e:
+            return jsonify(error=str(e)), 400
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

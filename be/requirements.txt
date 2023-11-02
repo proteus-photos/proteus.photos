@@ -1,7 +1,8 @@
 starlette
 python-multipart
 onnxruntime
-fastapi
+flask
+flask-cors
 gunicorn
 pydantic
 pillow
