@@ -21,14 +21,14 @@ export const PerceptualHashTable: React.FC<PerceptualHashTableProps> = ({ data }
             <TableCaption>Perceptual Hash Results</TableCaption>
             <TableHeader>
                 <TableRow>
-                    <TableHead key={"Perceptual hash type"}>Type</TableHead>
+                    <TableHead>Type</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {HASH_TYPES.map((hashType) => (
                     <TableRow key={hashType}>
-                        <TableCell key={hashType}>{hashType}</TableCell>
-                        <TableCell key={hashType}>{data[hashType]}</TableCell>
+                        <TableCell>{hashType}</TableCell>
+                        <TableCell>{data[hashType]}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>

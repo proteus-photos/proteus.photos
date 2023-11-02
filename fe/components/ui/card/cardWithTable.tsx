@@ -48,6 +48,7 @@ export const CardWithTable = () => {
                 <CardContent>
                     <div className="flex flex-row justify-center items-center">
                         {!tableData &&
+                            // eslint-disable-next-line react/no-children-prop
                             <FileUploader classes="border-none" disabled={true} name="file" types={FILE_TYPES} handleChange={(file: File) => handleFileChange(file)}>
                                 <DragAndDropCard />
                             </FileUploader>}
