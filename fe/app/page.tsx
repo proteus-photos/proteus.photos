@@ -7,8 +7,8 @@ const Home = () => {
       <div className="flex justify-between items-center mb-8">
         <div className="text-3xl font-bold">Morpheus</div>
         <nav className="flex space-x-4">
-          <a href="" className="hover:text-gray-600 text-lg underline">Github</a>
-          <a href="#" className="hover:text-gray-600 text-lg underline">Work with us</a>
+          {/* <a href="" className="hover:text-gray-600 text-lg underline">Github</a> */}
+          <a href="mailto:danielbess16@gmail.com" className="hover:text-gray-600 text-lg underline">Work with us</a>
         </nav>
       </div>
       <div className="flex flex-wrap -mx-4">
