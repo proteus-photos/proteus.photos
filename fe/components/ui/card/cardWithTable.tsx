@@ -17,8 +17,8 @@ import { PerceptualHashTable } from "../table/perceptualHashTable"
 import { PerceptualHashResponse } from "@/types/types"
 
 const FILE_TYPES = ["JPEG", "PNG"]
-const PROCESS_IMAGE_ENDPOINT = `https://morpheus-landing.onrender.com/process_image/`
-// const PROCESS_IMAGE_ENDPOINT = `http://0.0.0.0:80/process_image/`
+const PROCESS_IMAGE_ENDPOINT = `https://morpheus-landing.onrender.com:8000/process_image`
+// const PROCESS_IMAGE_ENDPOINT = `http://127.0.0.1:8000/process_image`
 
 export const CardWithTable = () => {
     const [tableData, setTableData] = React.useState<PerceptualHashResponse>()
@@ -26,14 +26,20 @@ export const CardWithTable = () => {
     const handleFileChange = async (file: File) => {
         const formData = new FormData();
         formData.append('file', file);
-
         try {
-            const response = await axios.post(PROCESS_IMAGE_ENDPOINT, formData, {
+            const response = await fetch(PROCESS_IMAGE_ENDPOINT, {
+                method: 'POST',
+                body: formData,
                 headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    'Accept': 'application/json',
+                },
             });
-            setTableData(response.data);
+            console.log("wtf")
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            setTableData(data);
         } catch (error) {
             console.error("Error uploading file:", error);
         }
