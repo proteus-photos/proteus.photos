@@ -3,3 +3,4 @@ gunicorn
 pydantic
 pillow
 imagehash
+uvicorn[standard]
