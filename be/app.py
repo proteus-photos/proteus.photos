@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
-from PIL import Image
+from PIL import Image, ImageFile
 from pydantic import BaseModel
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,6 +7,8 @@ import io
 
 from utils import apply_phashes
 from constants import ORIGINS
+# https://github.com/python-pillow/Pillow/issues/1510
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 app = FastAPI()
 

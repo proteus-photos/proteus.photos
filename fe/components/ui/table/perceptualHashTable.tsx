@@ -26,7 +26,7 @@ export const PerceptualHashTable: React.FC<PerceptualHashTableProps> = ({ data }
             </TableHeader>
             <TableBody>
                 {HASH_TYPES.map((hashType) => (
-                    <TableRow>
+                    <TableRow key={hashType}>
                         <TableCell key={hashType}>{hashType}</TableCell>
                         <TableCell key={hashType}>{data[hashType]}</TableCell>
                     </TableRow>

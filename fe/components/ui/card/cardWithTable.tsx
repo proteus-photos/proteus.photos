@@ -17,7 +17,9 @@ import { PerceptualHashTable } from "../table/perceptualHashTable"
 import { PerceptualHashResponse } from "@/types/types"
 
 const FILE_TYPES = ["JPEG", "PNG"]
-export function CardWithTable() {
+const PROCESS_IMAGE_ENDPOINT = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/process_image/`
+
+export const CardWithTable = () => {
     const [tableData, setTableData] = React.useState<PerceptualHashResponse>()
 
     const handleFileChange = async (file: File) => {
@@ -25,7 +27,7 @@ export function CardWithTable() {
         formData.append('file', file);
 
         try {
-            const response = await axios.post('http://0.0.0.0:80/process_image/', formData, {
+            const response = await axios.post(PROCESS_IMAGE_ENDPOINT, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -46,9 +48,9 @@ export function CardWithTable() {
                 <CardContent>
                     <div className="flex flex-row justify-center items-center">
                         {!tableData &&
-                            <FileUploader classes="border-none" disabled={true} children={<div>
+                            <FileUploader classes="border-none" disabled={true} name="file" types={FILE_TYPES} handleChange={(file: File) => handleFileChange(file)}>
                                 <DragAndDropCard />
-                            </div>} name="file" types={FILE_TYPES} handleChange={(file: File) => handleFileChange(file)} />}
+                            </FileUploader>}
                         {tableData && <PerceptualHashTable data={tableData} />}
                     </div>
                 </CardContent>
