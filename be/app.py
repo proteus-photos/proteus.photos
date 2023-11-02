@@ -7,6 +7,7 @@ import io
 
 from utils import apply_phashes
 from constants import ORIGINS
+
 # https://github.com/python-pillow/Pillow/issues/1510
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -19,6 +20,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 class PerceptualHashes(BaseModel):
     blockhash: str

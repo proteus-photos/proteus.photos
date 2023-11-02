@@ -1,5 +1,6 @@
 ORIGINS = [
-    "http://localhost:3000", 
-    "http://0.0.0.0:3000"
-    "http://yourfrontenddomain.com",
+    "http://localhost:3000",
+    "http://0.0.0.0:3000",
+    "https://morpheus.pics",
+    "morpheus-landing.vercel.app",
 ]
