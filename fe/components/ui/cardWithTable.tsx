@@ -9,11 +9,11 @@ import {
     CardDescription,
     CardFooter,
     CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+    CardTitle
+} from "./card/card"
 import { FileUploader } from "react-drag-drop-files"
-import { DragAndDropCard } from "./dragAndDropCard"
-import { PerceptualHashTable } from "./perceptualHashTable"
+import { DragAndDropCard } from "./card/dragAndDropCard"
+import { PerceptualHashTable } from "./table/perceptualHashTable"
 import { PerceptualHashResponse } from "@/types/types"
 
 const FILE_TYPES = ["JPEG", "PNG"]

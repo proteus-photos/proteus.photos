@@ -10,7 +10,7 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card/card"
+} from "../../../components/ui/card/card"
 import { FileUploader } from "react-drag-drop-files"
 import { DragAndDropCard } from "./dragAndDropCard"
 import { PerceptualHashTable } from "../table/perceptualHashTable"

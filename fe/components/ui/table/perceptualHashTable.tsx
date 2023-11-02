@@ -6,8 +6,8 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table/table"
-import { PerceptualHash, PerceptualHashResponse } from "@/types/types";
+} from "../../../components/ui/table/table"
+import { PerceptualHash, PerceptualHashResponse } from "../../../types/types";
 
 type PerceptualHashTableProps = {
     data: PerceptualHashResponse;
