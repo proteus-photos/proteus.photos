@@ -1,3 +1,4 @@
+onnxruntime
 fastapi
 gunicorn
 pydantic
