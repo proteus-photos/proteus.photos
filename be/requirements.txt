@@ -1,3 +1,4 @@
+starlette
 python-multipart
 onnxruntime
 fastapi
