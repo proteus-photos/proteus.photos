@@ -18,6 +18,7 @@ import { PerceptualHashResponse } from "@/types/types"
 
 const FILE_TYPES = ["JPEG", "PNG"]
 const PROCESS_IMAGE_ENDPOINT = `https://morpheus-landing.onrender.com/process_image/`
+// const PROCESS_IMAGE_ENDPOINT = `http://0.0.0.0:80/process_image/`
 
 export const CardWithTable = () => {
     const [tableData, setTableData] = React.useState<PerceptualHashResponse>()
