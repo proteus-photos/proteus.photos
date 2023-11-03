@@ -17,7 +17,7 @@ import { PerceptualHashTable } from "../table/perceptualHashTable"
 import { PerceptualHashResponse } from "@/types/types"
 
 const FILE_TYPES = ["JPEG", "PNG"]
-const PROCESS_IMAGE_ENDPOINT = `https://morpheus-landing.onrender.com:8000/process_image`
+const PROCESS_IMAGE_ENDPOINT = `https://morpheus-landing.onrender.com/process_image`
 // const PROCESS_IMAGE_ENDPOINT = `http://127.0.0.1:8000/process_image`
 
 export const CardWithTable = () => {
