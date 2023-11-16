@@ -12,7 +12,7 @@ export const DragAndDropCard = ({ isLoading }: DragAndDropCardProps) => {
             <div className="flex flex-row items-center justify-center w-full h-full">
                 <div className="text-black text-s font-light">
                     {!isLoading && <div>.jpeg/.png supported!</div>}
-                    {isLoading && <div class="loader"></div>}
+                    {isLoading && <div className="loader"></div>}
                 </div>
             </div>
         </div>
