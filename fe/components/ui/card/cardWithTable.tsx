@@ -7,7 +7,6 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "../../../components/ui/card/card"
@@ -22,11 +21,13 @@ const PROCESS_IMAGE_ENDPOINT = `https://morpheus-landing.onrender.com/process_im
 
 export const CardWithTable = () => {
     const [tableData, setTableData] = React.useState<PerceptualHashResponse>()
+    const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
     const handleFileChange = async (file: File) => {
         const formData = new FormData();
         formData.append('file', file);
         try {
+            setIsLoading(true);
             const response = await fetch(PROCESS_IMAGE_ENDPOINT, {
                 method: 'POST',
                 body: formData,
@@ -34,11 +35,11 @@ export const CardWithTable = () => {
                     'Accept': 'application/json',
                 },
             });
-            console.log("wtf")
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
+            setIsLoading(false);
             setTableData(data);
         } catch (error) {
             console.error("Error uploading file:", error);
@@ -57,7 +58,7 @@ export const CardWithTable = () => {
                         {!tableData &&
                             // eslint-disable-next-line react/no-children-prop
                             <FileUploader classes="border-none" disabled={true} name="file" types={FILE_TYPES} handleChange={(file: File) => handleFileChange(file)}>
-                                <DragAndDropCard />
+                                <DragAndDropCard isLoading={isLoading} />
                             </FileUploader>}
                         {tableData && <PerceptualHashTable data={tableData} />}
                     </div>

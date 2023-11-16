@@ -17,8 +17,4 @@ def apply_phashes(image):
     #             results[k] = f"Error: {str(e)}"
 
     #     return results
-    k = {}
-    for hash in PERCEPTUAL_HASHES:
-        k[hash] = PERCEPTUAL_HASHES[hash](image)
-
-    return k
+    return {hash: PERCEPTUAL_HASHES[hash](image) for hash in PERCEPTUAL_HASHES}
