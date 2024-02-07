@@ -18,6 +18,7 @@ const Home = () => {
           <div className="flex space-x-4">
             <a target="_blank" rel="noopener noreferrer" href="http://morpheus.hackgrants.com" className="text-xl bg-pink-500 text-white py-2 px-6 rounded hover:bg-pink-600">Project outline</a>
             <Link href="#perceptual-hashes-section" className="text-xl border border-gray-500 text-gray-600 py-2 px-6 rounded hover:bg-gray-100">Try our playground</Link>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=OF0S5IVN-UE" className="text-xl border border-gray-500 text-gray-600 py-2 px-6 rounded hover:bg-gray-100">Watch our video</a>
           </div>
         </div>
       </div>
