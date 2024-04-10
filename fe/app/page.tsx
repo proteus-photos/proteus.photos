@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="font-manrope container min-h-screen mx-auto my-auto p-10">
       <div className="flex justify-between items-center mb-8">
-        <div className="text-3xl font-bold">Morpheus</div>
+        <div className="text-3xl font-bold">Proteus</div>
         <nav className="flex space-x-4">
           {/* <a href="" className="hover:text-gray-600 text-lg underline">Github</a> */}
           <a href="mailto:danielbess16@gmail.com" className="hover:text-gray-600 text-lg underline">Work with us</a>
@@ -14,7 +14,7 @@ const Home = () => {
       <div className="flex flex-wrap -mx-4">
         <div className="w-full mt-16 px-4">
           <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text">Next generation<br />content provenance</h1>
-          <p className="text-xl mb-8 leading-8">Morpheus is an open-source platform for AI content provenance - leveraging proof of transformation to create incorruptible and robust watermarks. </p>
+          <p className="text-xl mb-8 leading-8">Proteus is an open-source platform for AI content provenance - leveraging proof of transformation to create incorruptible and robust watermarks. </p>
           <div className="flex space-x-4">
             <a target="_blank" rel="noopener noreferrer" href="http://morpheus.hackgrants.com" className="text-xl bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600">Project outline</a>
             <Link href="#perceptual-hashes-section" className="text-xl border border-green-500 text-green-600 py-2 px-6 rounded hover:bg-green-100">Try our playground</Link>
