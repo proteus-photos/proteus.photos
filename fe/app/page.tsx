@@ -13,8 +13,11 @@ const Home = () => {
       </div>
       <div className="flex flex-wrap -mx-4">
         <div className="w-full mt-16 px-4">
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text">Next generation<br />content provenance</h1>
-          <p className="text-xl mb-8 leading-8">Proteus is an open-source platform for AI content provenance - leveraging proof of transformation to create incorruptible and robust watermarks. </p>
+          <div className="container mx-auto pr-4 sm:pr-6 lg:pr-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>Next generation</h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>content provenance</h1>
+            <p className="text-lg sm:text-xl mt-6 mb-8 leading-relaxed pb-2">Proteus is an open-source platform for AI content provenance - leveraging proof of transformation to create incorruptible and robust watermarks.</p>
+          </div>
           <div className="flex flex-wrap -mb-4">
             <a target="_blank" rel="noopener noreferrer" href="http://morpheus.hackgrants.com" className="mb-4 text-xl bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto mr-4">Project outline</a>
             <Link href="#perceptual-hashes-section" className="mb-4 text-xl border border-green-500 text-green-600 py-2 px-6 rounded hover:bg-green-100 w-full sm:w-auto mr-4">Try our playground</Link>
