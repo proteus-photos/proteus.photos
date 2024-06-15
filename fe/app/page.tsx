@@ -15,10 +15,11 @@ const Home = () => {
         <div className="w-full mt-16 px-4">
           <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text">Next generation<br />content provenance</h1>
           <p className="text-xl mb-8 leading-8">Proteus is an open-source platform for AI content provenance - leveraging proof of transformation to create incorruptible and robust watermarks. </p>
-          <div className="flex space-x-4">
-            <a target="_blank" rel="noopener noreferrer" href="http://morpheus.hackgrants.com" className="text-xl bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600">Project outline</a>
-            <Link href="#perceptual-hashes-section" className="text-xl border border-green-500 text-green-600 py-2 px-6 rounded hover:bg-green-100">Try our playground</Link>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=OF0S5IVN-UE" className="text-xl border border-yellow-500 text-yellow-600 py-2 px-6 rounded hover:bg-yellow-100">Watch our talk</a>
+          <div className="flex flex-wrap -mb-4">
+            <a target="_blank" rel="noopener noreferrer" href="http://morpheus.hackgrants.com" className="mb-4 text-xl bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto mr-4">Project outline</a>
+            <Link href="#perceptual-hashes-section" className="mb-4 text-xl border border-green-500 text-green-600 py-2 px-6 rounded hover:bg-green-100 w-full sm:w-auto mr-4">Try our playground</Link>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=OF0S5IVN-UE" className="mb-4 text-xl border border-yellow-500 text-yellow-600 py-2 px-6 rounded hover:bg-yellow-100 w-full sm:w-auto mr-4">Watch 5 min talk</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=DopakmTZwXg" className="mb-4 text-xl border border-orange-500 text-orange-600 py-2 px-6 rounded hover:bg-orange-100 w-full sm:w-auto mr-4">Watch 30 min talk</a>
           </div>
         </div>
       </div>
@@ -34,9 +35,12 @@ const Home = () => {
             allowFullScreen
           />
           <h1 id="perceptual-hashes-section" className="text-4xl font-bold mb-6 text-black bg-clip-text mt-16">What are perceptual hashes?</h1>
+          <p className="text-lg mb-4">
+            Upload an original image and its edited version to compare their perceptual hashes. This will help you understand how closely the hashes match, indicating the degree of similarity between the two images.
+          </p>
           <div className="flex flex-row items-center justify-center mb-4 space-x-4">
-            <CardWithTable />
-            <CardWithTable />
+            <CardWithTable text="Drag and drop an image below!" />
+            <CardWithTable text="Drag and drop a modified image below!" />
           </div>
         </div>
       </div>
