@@ -19,7 +19,11 @@ const FILE_TYPES = ["JPEG", "PNG"]
 const PROCESS_IMAGE_ENDPOINT = `https://morpheus-landing.onrender.com/process_image`
 // const PROCESS_IMAGE_ENDPOINT = `http://127.0.0.1:8000/process_image`
 
-export const CardWithTable = () => {
+interface CardWithTableProps {
+    text: string
+}
+
+export const CardWithTable = (props: CardWithTableProps) => {
     const [tableData, setTableData] = React.useState<PerceptualHashResponse>()
     const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
@@ -51,7 +55,7 @@ export const CardWithTable = () => {
             <Card className="rounded-3xl h-full">
                 <CardHeader className="flex flex-col justify-center items-center">
                     <CardTitle className="mb-2">Explore perceptual hashes</CardTitle>
-                    <CardDescription>Drag and drop an image below!</CardDescription>
+                    <CardDescription>{ props.text } </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-row justify-center items-center">
