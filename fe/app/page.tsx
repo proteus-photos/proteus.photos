@@ -19,7 +19,7 @@ const Home = () => {
             <p className="text-lg sm:text-xl mt-6 mb-8 leading-relaxed pb-2">Proteus is an open-source platform for AI content provenance - leveraging proof of transformation to create incorruptible and robust watermarks.</p>
           </div>
           <div className="flex flex-wrap -mb-4">
-            <a target="_blank" rel="noopener noreferrer" href="http://morpheus.hackgrants.com" className="mb-4 text-xl bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto mr-4">Project outline</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://proteusphotos.notion.site/Proteus-V2-Transformation-Resistant-AI-Image-Watermarking-2fae4336b9534e6ab4410003461a2811" className="mb-4 text-xl bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto mr-4">Read our blog post</a>
             <Link href="#perceptual-hashes-section" className="mb-4 text-xl border border-green-500 text-green-600 py-2 px-6 rounded hover:bg-green-100 w-full sm:w-auto mr-4">Try our playground</Link>
             <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=OF0S5IVN-UE" className="mb-4 text-xl border border-yellow-500 text-yellow-600 py-2 px-6 rounded hover:bg-yellow-100 w-full sm:w-auto mr-4">Watch 5 min talk</a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=DopakmTZwXg" className="mb-4 text-xl border border-orange-500 text-orange-600 py-2 px-6 rounded hover:bg-orange-100 w-full sm:w-auto mr-4">Watch 30 min talk</a>
