@@ -8,18 +8,28 @@ const Home = () => {
         <div className="text-3xl font-bold">Proteus</div>
         <nav className="flex space-x-4">
           {/* <a href="" className="hover:text-gray-600 text-lg underline">Github</a> */}
-          <a href="mailto:danielbess16@gmail.com" className="hover:text-gray-600 text-lg underline">Work with us</a>
+          <a href="mailto:aayushg@mit.edu" className="hover:text-gray-600 text-lg underline">Work with us</a>
         </nav>
       </div>
       <div className="flex flex-wrap -mx-4">
         <div className="w-full mt-16 px-4">
-          <div className="container mx-auto pr-4 sm:pr-6 lg:pr-8">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>Next generation</h1>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>content provenance</h1>
-            <p className="text-lg sm:text-xl mt-6 mb-8 leading-relaxed pb-2">Proteus is an open-source platform for AI content provenance - leveraging proof of transformation to create incorruptible and robust watermarks.</p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>Next generation</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>content provenance</h1>
+          <p className="text-lg sm:text-xl mt-6 mb-8 leading-relaxed pb-2">Proteus is an open-source platform for AI content provenance, leveraging perceptual hashing, digital signatures, and MPC/FHE to create incorruptible, private, and robust watermarks.</p>
+          
+          <div className="mt-4 mb-8">
+            <h3 className="text-xl font-semibold mb-3">Key Innovations</h3>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>DinoHash: Perceptual hashing algorithm robust to common image transformations like filters, compression and crops. Algorithm achieves 12% higher bit accuracy than state-of-the-art methods. Perceptual hash values are signed by the content generator, establishing provenance.</li>
+              <li>Privacy-Preserving Queries: Multi-Party Fully Homomorphic Encryption to map image provenance, keeps both user queries and registry data private, with a fallback to MPC if the database is too large.</li>
+              <li>Failsafe Detection: Backup classifier identifies synthetic images not found in the registry with state of the art accuracy, showing 25% better classification accuracy on real-world AI generators.</li>
+              <li>Adversarial Defense: Protection against both hash collision and hash aversion attacks, that limit the attack surface wherein an attacker cannot modify the provenance without visually changing the image.</li>
+            </ul>
           </div>
-          <div className="flex flex-wrap -mb-4">
-            <a target="_blank" rel="noopener noreferrer" href="https://proteusphotos.notion.site/Proteus-V2-Transformation-Resistant-AI-Image-Watermarking-2fae4336b9534e6ab4410003461a2811" className="mb-4 text-xl bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto mr-4">Read our blog post</a>
+          
+          <div className="flex flex-wrap">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/proteus-photos/proteus-paper/blob/main/main.pdf" className="mb-4 text-xl bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto mr-4">Read our paper</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://proteusphotos.notion.site/Proteus-V2-Transformation-Resistant-AI-Image-Watermarking-2fae4336b9534e6ab4410003461a2811" className="mb-4 text-xl bg-white-500 text-blue-500 border border-blue-500 py-2 px-6 rounded hover:bg-blue-800 w-full sm:w-auto mr-4">Read our blog post</a>
             <Link href="#perceptual-hashes-section" className="mb-4 text-xl border border-green-500 text-green-600 py-2 px-6 rounded hover:bg-green-100 w-full sm:w-auto mr-4">Try our playground</Link>
             <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=OF0S5IVN-UE" className="mb-4 text-xl border border-yellow-500 text-yellow-600 py-2 px-6 rounded hover:bg-yellow-100 w-full sm:w-auto mr-4">Watch 5 min talk</a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=DopakmTZwXg" className="mb-4 text-xl border border-orange-500 text-orange-600 py-2 px-6 rounded hover:bg-orange-100 w-full sm:w-auto mr-4">Watch 30 min talk</a>
@@ -37,7 +47,7 @@ const Home = () => {
             src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FiMlCZEIUktgXBWtHWPN3J2%2FUntitled%3Ftype%3Dwhiteboard%26node-id%3D0%253A1%26t%3DivbdSEsSvyzC9S6G-1"
             allowFullScreen
           />
-          <h1 id="perceptual-hashes-section" className="text-4xl font-bold mb-6 text-black bg-clip-text mt-16">What are perceptual hashes?</h1>
+          <h1 id="perceptual-hashes-section" className="text-4xl font-bold mb-6 text-black bg-clip-text mt-16">Perceptual hash</h1>
           <p className="text-lg mb-4">
             Upload an original image and its edited version to compare their perceptual hashes. This will help you understand how closely the hashes match, indicating the degree of similarity between the two images.
           </p>
