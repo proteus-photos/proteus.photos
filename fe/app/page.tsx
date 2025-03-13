@@ -47,7 +47,7 @@ const Home = () => {
             src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FiMlCZEIUktgXBWtHWPN3J2%2FUntitled%3Ftype%3Dwhiteboard%26node-id%3D0%253A1%26t%3DivbdSEsSvyzC9S6G-1"
             allowFullScreen
           />
-          <h1 id="perceptual-hashes-section" className="text-4xl font-bold mb-6 text-black bg-clip-text mt-16">Perceptual hash</h1>
+          <h1 id="perceptual-hashes-section" className="text-4xl font-bold mb-6 text-black bg-clip-text mt-16">What are perceptual hashes?</h1>
           <p className="text-lg mb-4">
             Upload an original image and its edited version to compare their perceptual hashes. This will help you understand how closely the hashes match, indicating the degree of similarity between the two images.
           </p>
