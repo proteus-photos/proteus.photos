@@ -1,7 +1,24 @@
+'use client';
+
 import { CardWithTable } from '@/components/ui/card/cardWithTable'
 import Link from 'next/link'
+import { PerceptualHashResponse } from '@/types/types'
+import React, { useState } from 'react'
 
 const Home = () => {
+  const [image1Data, setImage1Data] = useState<PerceptualHashResponse | null>(null)
+  const [image2Data, setImage2Data] = useState<PerceptualHashResponse | null>(null)
+
+  const handleImage1Processed = (data: PerceptualHashResponse | null) => {
+    setImage1Data(data)
+    console.log("image1Data", image1Data, "data", data)
+  }
+
+  const handleImage2Processed = (data: PerceptualHashResponse | null) => {
+    setImage2Data(data)
+    console.log("image2Data", image2Data, "data", data)
+  }
+
   return (
     <div className="font-manrope container min-h-screen mx-auto my-auto p-10">
       <div className="flex justify-between items-center mb-8">
@@ -64,9 +81,17 @@ const Home = () => {
           <p className="text-lg mb-4">
             Upload an original image and its edited version to compare their perceptual hashes. This will help you understand how closely the hashes match, indicating the degree of similarity between the two images.
           </p>
-          <div className="flex flex-row items-center justify-center mb-4 space-x-4">
-            <CardWithTable text="Drag and drop an image below!" />
-            <CardWithTable text="Drag and drop a modified image below!" />
+          <div className="flex flex-row items-start justify-center mb-4 space-x-4">
+            <CardWithTable 
+              text="Drag and drop an image below!" 
+              onImageProcessed={handleImage1Processed}
+              comparisonData={image2Data}
+            />
+            <CardWithTable 
+              text="Drag and drop a modified image below!" 
+              onImageProcessed={handleImage2Processed}
+              comparisonData={image1Data}
+            />
           </div>
         </div>
       </div>
