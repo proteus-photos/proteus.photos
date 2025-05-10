@@ -40,6 +40,12 @@ const Home = () => {
                 GitHub
               </span>
             </a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/@proteus-labs/dinohash" className="mb-4 text-xl border border-gray-500 text-gray-600 py-2 px-6 rounded hover:bg-gray-100 w-full sm:w-auto mr-4">
+              <span className="flex items-center">
+                <img src="/npm.svg" className="w-5 h-5 mr-2" alt="npm logo" />
+                npm
+              </span>
+            </a>
           </div>
         </div>
       </div>
