@@ -1,7 +1,6 @@
 'use client'
 
 import * as React from "react"
-import axios from 'axios'
 
 import {
     Card,
@@ -10,7 +9,6 @@ import {
     CardHeader,
     CardTitle,
 } from "../../../components/ui/card/card"
-import { FileUploader } from "react-drag-drop-files"
 import { DragAndDropCard } from "./dragAndDropCard"
 import { PerceptualHashTable } from "../table/perceptualHashTable"
 import { PerceptualHashResponse } from "@/types/types"
@@ -22,37 +20,67 @@ const PROCESS_IMAGE_ENDPOINT = `https://morpheus-landing.onrender.com/process_im
 export const CardWithTable = ({ text }: { text: string }) => {
     const [tableData, setTableData] = React.useState<PerceptualHashResponse>()
     const [isLoading, setIsLoading] = React.useState<boolean>(false)
-    const fileInputRef = React.useRef<HTMLInputElement>(null);
+    const [dragActive, setDragActive] = React.useState<boolean>(false)
+    const inputRef = React.useRef<HTMLInputElement>(null)
 
-    const handleFileChange = async (file: File) => {
-        const formData = new FormData();
-        formData.append('file', file);
+    const handleDrag = (e: React.DragEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+        if (e.type === "dragenter" || e.type === "dragover") {
+            setDragActive(true)
+        } else if (e.type === "dragleave") {
+            setDragActive(false)
+        }
+    }
+
+    const handleDrop = async (e: React.DragEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setDragActive(false)
+
+        const files = e.dataTransfer.files
+        if (files?.[0] && FILE_TYPES.includes(files[0].type.split("/")[1].toUpperCase())) {
+            await handleFile(files[0])
+        }
+    }
+
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        if (e.target.files?.[0]) {
+            await handleFile(e.target.files[0])
+        }
+    }
+
+    const handleFile = async (file: File) => {
+        const formData = new FormData()
+        formData.append('file', file)
+        
         try {
-            setIsLoading(true);
+            setIsLoading(true)
             const response = await fetch(PROCESS_IMAGE_ENDPOINT, {
                 method: 'POST',
                 body: formData,
                 headers: {
                     'Accept': 'application/json',
-                },
-            });
+                }
+            })
+            
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`)
             }
-            const data = await response.json();
-            setIsLoading(false);
-            setTableData(data);
+            
+            const data = await response.json()
+            setTableData(data)
         } catch (error) {
-            console.error("Error uploading file:", error);
+            console.error("Error processing image:", error)
+        } finally {
+            setIsLoading(false)
         }
     }
 
-    // Upload a file from the filesystem, then handle file change
-    const handleClick = () => {
-        if (fileInputRef.current) {
-            fileInputRef.current.click();
-        }
-    };
+    const onButtonClick = () => {
+        inputRef.current?.click()
+    }
 
     return (
         <div className="font-manrope w-[400px] h-[400px] overflow-y-scroll bg-white rounded-3xl">
@@ -63,15 +91,27 @@ export const CardWithTable = ({ text }: { text: string }) => {
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-row justify-center items-center">
-                        {!tableData &&
-                            <FileUploader classes="border-none" name="file" types={FILE_TYPES} onClick={handleClick} handleDrop={(file: File) => handleFileChange(file)}>
-                                <input ref={fileInputRef} type="file" style={{ display: 'none' }} onChange={(e) => {
-                                    if (e.target.files?.[0]) {
-                                        handleFileChange(e.target.files[0]);
-                                    }
-                                }} />
-                                <DragAndDropCard isLoading={isLoading} />
-                            </FileUploader>}
+                        {!tableData && (
+                            <div 
+                                onDragEnter={handleDrag}
+                                onDragLeave={handleDrag}
+                                onDragOver={handleDrag}
+                                onDrop={handleDrop}
+                            >
+                                <input
+                                    ref={inputRef}
+                                    type="file"
+                                    className="hidden"
+                                    accept=".jpeg,.png"
+                                    onChange={handleChange}
+                                />
+                                <DragAndDropCard 
+                                    isLoading={isLoading}
+                                    onClick={onButtonClick}
+                                    isDragging={dragActive}
+                                />
+                            </div>
+                        )}
                         {tableData && <PerceptualHashTable data={tableData} />}
                     </div>
                 </CardContent>
