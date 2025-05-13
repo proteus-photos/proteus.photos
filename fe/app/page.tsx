@@ -83,12 +83,12 @@ const Home = () => {
           </p>
           <div className="flex flex-row items-start justify-center mb-4 space-x-4">
             <CardWithTable 
-              text="Drag and drop an image below!" 
+              text="Upload original image" 
               onImageProcessed={handleImage1Processed}
               comparisonData={image2Data}
             />
             <CardWithTable 
-              text="Drag and drop a modified image below!" 
+              text="Upload modified image" 
               onImageProcessed={handleImage2Processed}
               comparisonData={image1Data}
             />

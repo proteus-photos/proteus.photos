@@ -106,8 +106,8 @@ export const CardWithTable: React.FC<CardWithTableProps> = ({ text, onImageProce
         <div className="font-manrope w-[400px] h-[400px] overflow-y-scroll bg-white rounded-3xl">
             <Card className="rounded-3xl h-full">
                 <CardHeader className="flex flex-col justify-center items-center">
-                    <CardTitle className="mb-2">Explore perceptual hashes</CardTitle>
-                    <CardDescription>{text}</CardDescription>
+                    <CardTitle className="mb-2">{text}</CardTitle>
+                    <CardDescription>Drag and drop, or click to upload!</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-col justify-center items-center">
