@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from "react"
+import { dinohash } from '@proteus-labs/dinohash'
 
 import {
     Card,
@@ -14,7 +15,7 @@ import { PerceptualHashTable } from "../table/perceptualHashTable"
 import { PerceptualHashResponse } from "@/types/types"
 
 const FILE_TYPES = ["JPEG", "PNG"]
-const PROCESS_IMAGE_ENDPOINT = (process.env.NEXT_PUBLIC_API_ENDPOINT || `https://proteus-photos.onrender.com`) + '/process_image'
+const PROCESS_IMAGE_ENDPOINT = (process.env.NEXT_PUBLIC_API_ENDPOINT || `127.0.0.1:5000`) + '/process_image'
 // const PROCESS_IMAGE_ENDPOINT = `http://127.0.0.1:8000/process_image`
 
 // Define the new props for CardWithTable
@@ -69,6 +70,20 @@ export const CardWithTable: React.FC<CardWithTableProps> = ({ text, onImageProce
         
         try {
             setIsLoading(true)
+            
+            // Compute dinohash using the API endpoint
+            const dinohashResponse = await fetch('/api/dinohash', {
+                method: 'POST',
+                body: formData,
+            })
+            
+            if (!dinohashResponse.ok) {
+                throw new Error(`Dinohash API error! status: ${dinohashResponse.status}`)
+            }
+            
+            const dinohashData = await dinohashResponse.json()
+            
+            // Get other perceptual hashes
             const response = await fetch(PROCESS_IMAGE_ENDPOINT, {
                 method: 'POST',
                 body: formData,
@@ -82,6 +97,8 @@ export const CardWithTable: React.FC<CardWithTableProps> = ({ text, onImageProce
             }
             
             const data = await response.json() as PerceptualHashResponse
+            // Add dinohash to the response data
+            data.dinohash = dinohashData.dinohash
             console.log("data returned from endpoint", data)
             setCardImageData(data)
             onImageProcessed(data)
