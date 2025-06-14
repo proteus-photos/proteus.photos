@@ -2,7 +2,7 @@ from PIL import Image, ImageEnhance
 
 from botorch.utils.transforms import unnormalize
 
-# from phashes.neuralhash.neuralhash import neuralhash
+from phashes.neuralhash.neuralhash import neuralhash
 from phashes.dinohash.dinohash import dinohash
 from . import constants as pot_constants
 

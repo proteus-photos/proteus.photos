@@ -7,7 +7,7 @@ from multiprocessing import Pool, cpu_count
 import pot.utils.constants as pot_constants
 from pot.turbo.state import TurboState
 from pot.turbo.eval import run_eval
-# from phashes.neuralhash.neuralhash import neuralhash
+from phashes.neuralhash.neuralhash import neuralhash
 from phashes.dinohash.dinohash import dinohash
 
 def parallel_run_eval(args):
