@@ -10,7 +10,7 @@ def neuralhash(im):
     session = onnxruntime.InferenceSession("./phashes/neuralhash/model.onnx")
 
     # Load output hash matrix
-    seed1 = open("./phashes/neuralhash//neuralhash_128x96_seed1.dat", "rb").read()[128:]
+    seed1 = open("./phashes/neuralhash/neuralhash_128x96_seed1.dat", "rb").read()[128:]
     seed1 = np.frombuffer(seed1, dtype=np.float32)
     seed1 = seed1.reshape([96, 128])
     # Preprocess image

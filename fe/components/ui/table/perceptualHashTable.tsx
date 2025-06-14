@@ -15,7 +15,7 @@ type PerceptualHashTableProps = {
     comparisonData?: PerceptualHashResponse | null;
 };
 
-const HASH_TYPES: Array<PerceptualHash> = ["blockhash", "colourhash", "neuralhash"]
+const HASH_TYPES: Array<PerceptualHash> = ["blockhash", "colourhash", "neuralhash", "dinohash"]
 
 export const PerceptualHashTable: React.FC<PerceptualHashTableProps> = ({ data, comparisonData }) => {
     const [prevData, setPrevData] = useState<PerceptualHashResponse | null>(null);
