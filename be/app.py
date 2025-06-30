@@ -20,6 +20,7 @@ class PerceptualHashes:
     blockhash: str
     neuralhash: str
     colourhash: str
+    dinohash: str
 
 
 @app.route("/process_image", methods=["POST"])
