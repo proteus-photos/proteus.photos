@@ -3,7 +3,7 @@ from PIL import Image, ImageEnhance
 from botorch.utils.transforms import unnormalize
 
 from phashes.neuralhash.neuralhash import neuralhash
-from phashes.dinohash.dinohash import dinohash
+from phashes.dinohash.dinohash import dinohash96
 from . import constants as pot_constants
 
 
@@ -77,7 +77,7 @@ def eval_objective(x, original_image, transformed_hash, bounds=pot_constants.BOU
             unnormalized_x[1], unnormalized_x[3] = unnormalized_x[3], unnormalized_x[1]
 
     applied_transformation = apply_transformations_to_image(unnormalized_x, original_image)
-    temp_hash = dinohash(applied_transformation)
+    temp_hash = dinohash96(applied_transformation)
 
     at_width, at_height = applied_transformation.size
     t_width, t_height = original_image.size

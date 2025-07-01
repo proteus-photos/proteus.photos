@@ -15,7 +15,7 @@ import { PerceptualHashResponse } from "@/types/types"
 
 const FILE_TYPES = ["JPEG", "PNG"]
 const PROCESS_IMAGE_ENDPOINT = (process.env.NEXT_PUBLIC_API_ENDPOINT || `https://proteus-photos.onrender.com`) + '/process_image'
-// const PROCESS_IMAGE_ENDPOINT = `http://127.0.0.1:8000/process_image`
+// const PROCESS_IMAGE_ENDPOINT = `http://127.0.0.1:5000/process_image`
 
 // Define the new props for CardWithTable
 interface CardWithTableProps {
