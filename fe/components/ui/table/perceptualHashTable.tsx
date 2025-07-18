@@ -27,16 +27,19 @@ export const PerceptualHashTable: React.FC<PerceptualHashTableProps> = ({ data, 
         }
     }, [data, comparisonData]);
     
-    const renderComparedHash = (currentHash: string, comparisonHash: string) => {
+    const renderComparedHash = (currentHash: string | undefined, comparisonHash: string) => {
         console.log("currentHash", currentHash, "comparisonHash", comparisonHash)
+        if (!currentHash) {
+            return <div className="font-mono text-gray-400">N/A</div>
+        }
         return (
             <div className="font-mono">
                 {currentHash.split('').map((char, index) => {
                     const isMatching = index < comparisonHash.length && char === comparisonHash[index];
                     return (
-                        <span 
-                            key={index} 
-                            style={{ 
+                        <span
+                            key={index}
+                            style={{
                                 color: prevData ? (isMatching ? 'green' : 'red') : 'black',
                                 fontWeight: isMatching ? 'normal' : 'bold'
                             }}
