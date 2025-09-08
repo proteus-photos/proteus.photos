@@ -32,7 +32,7 @@ const Home = () => {
         <div className="w-full mt-16 px-4">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>Next generation</h1>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>content provenance</h1>
-          <p className="text-lg sm:text-xl mt-6 mb-8 leading-relaxed pb-2">Proteus is an open-source platform for AI content provenance, leveraging perceptual hashing, digital signatures, and MPC/FHE to create incorruptible, private, and robust watermarks. The Proteus paper was presented at ICML 2025 at the CODEML Workshop. The Dinohash perceptual hashing algorithm can be used indepedently of the Proteus system.</p>
+          <p className="text-lg sm:text-xl mt-6 mb-8 leading-relaxed pb-2">Proteus is an open-source platform for AI content provenance, leveraging perceptual hashing, digital signatures, and MPC/FHE to create incorruptible, private, and robust watermarks. The <a href="https://icml.cc/virtual/2025/48181" className="underline">Proteus paper was presented at ICML 2025</a> at the CODEML Workshop. The Dinohash perceptual hashing algorithm can be used independently of the Proteus system.</p>
           
           <div className="mt-4 mb-8">
             <h3 className="text-xl font-semibold mb-3">Key Innovations</h3>
@@ -92,7 +92,7 @@ const Home = () => {
         <div className="w-full mt-12 px-4">
           <h2 className="text-3xl font-bold mb-4">Performance trade-offs</h2>
           <p className="text-lg mb-6">
-            We retrained the perceptual hashing head on multiple backbones of different models and hash sizes to trace the Pareto frontier between robustness and efficiency. This table shows evaluation time on 12 CPUs and different student-teacher distillations as backbones. Smaller backbones (e.g., Resnets) are faster and lighter for real-time use, while larger backbones (e.g., DinoV2) deliver higher robustness to edits at higher compute cost. The plot below summarizes the trade-off, and feel free to <a href="mailto:aayushg@mit.edu" className="underline">contact us</a> if you want access to other models on the Pareto frontier.
+            We retrained the perceptual hashing head on multiple backbones of different models and hash sizes to trace the Pareto frontier between robustness and efficiency. This table shows evaluation time on 12 CPUs and different student-teacher distillations as backbones. Smaller backbones (e.g., Resnets) are faster and lighter for real-time use, while larger backbones (e.g., DinoV2) deliver higher robustness to edits at higher compute cost. The plot below summarizes the trade-off. Feel free to <a href="mailto:aayushg@mit.edu" className="underline">contact us</a> if you want access to other ProteusHash models on the Pareto frontier.
           </p>
           <img src="/paretofront.jpg" alt="Pareto frontier across backbones and hash sizes" className="w-full rounded-lg border border-gray-200 shadow-sm" />
         </div>
