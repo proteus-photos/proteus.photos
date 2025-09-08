@@ -27,8 +27,11 @@ export const PerceptualHashTable: React.FC<PerceptualHashTableProps> = ({ data, 
         }
     }, [data, comparisonData]);
     
-    const renderComparedHash = (currentHash: string, comparisonHash: string) => {
+    const renderComparedHash = (currentHash: string | undefined, comparisonHash: string | undefined) => {
         console.log("currentHash", currentHash, "comparisonHash", comparisonHash)
+        if (!currentHash || !comparisonHash) {
+            return <div className="font-mono">Upload a second image to compare!</div>;
+        }
         return (
             <div className="font-mono">
                 {currentHash.split('').map((char, index) => {

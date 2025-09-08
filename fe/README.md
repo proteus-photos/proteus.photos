@@ -5,12 +5,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, install the dependencies:
 
 ```bash
+cd fe
 yarn install
 ```
 
 Then, run the development server:
 
 ```bash
+cd be
 cp .env.production .env.local
 yarn dev
 ```
