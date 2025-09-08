@@ -32,15 +32,16 @@ const Home = () => {
         <div className="w-full mt-16 px-4">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>Next generation</h1>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 text-transparent bg-clip-text" style={{ lineHeight: '1.25' }}>content provenance</h1>
-          <p className="text-lg sm:text-xl mt-6 mb-8 leading-relaxed pb-2">Proteus is an open-source platform for AI content provenance, leveraging perceptual hashing, digital signatures, and MPC/FHE to create incorruptible, private, and robust watermarks.</p>
+          <p className="text-lg sm:text-xl mt-6 mb-8 leading-relaxed pb-2">Proteus is an open-source platform for AI content provenance, leveraging perceptual hashing, digital signatures, and MPC/FHE to create incorruptible, private, and robust watermarks. The Proteus paper was presented at ICML 2025 at the CODEML Workshop. The Dinohash perceptual hashing algorithm can be used indepedently of the Proteus system.</p>
           
           <div className="mt-4 mb-8">
             <h3 className="text-xl font-semibold mb-3">Key Innovations</h3>
             <ul className="list-disc pl-6 space-y-2">
-              <li>DinoHash: Perceptual hashing algorithm robust to common image transformations like filters, compression and crops. Algorithm achieves 12% higher bit accuracy than state-of-the-art methods. Perceptual hash values are signed by the content generator, establishing provenance.</li>
+              <li>DinoHash: Perceptual hashing algorithm robust to common image transformations like filters, compression and crops. Algorithm achieves 12% higher bit accuracy than state-of-the-art methods.</li>
+              <li>Provenance Verification: Perceptual hash values are signed by the content generator, establishing provenance.</li>
               <li>Privacy-Preserving Queries: Multi-Party Fully Homomorphic Encryption to map image provenance, keeps both user queries and registry data private, with a fallback to MPC if the database is too large.</li>
               <li>Failsafe Detection: Backup classifier identifies synthetic images not found in the registry with state of the art accuracy, showing 25% better classification accuracy on real-world AI generators.</li>
-              <li>Adversarial Defense: Protection against both hash collision and hash aversion attacks, that limit the attack surface wherein an attacker cannot modify the provenance without visually changing the image.</li>
+              <li>Adversarial Defense: DinoHash is adversarially trained against both hash collision and hash aversion attacks, that limit the attack surface wherein an attacker cannot modify the provenance without visually changing the image.</li>
             </ul>
           </div>
           
@@ -68,16 +69,8 @@ const Home = () => {
       </div>
       <div className="divider my-10"></div>
       <div className='flex flex-wrap -mx-4'>
-        <div className="w-full mt-24 px-4">
-          <h1 className="text-4xl font-bold mb-6 text-black bg-clip-text">How does it work?</h1>
-          <iframe
-            className="border border-opacity-10"
-            width="100%"
-            height="450"
-            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FiMlCZEIUktgXBWtHWPN3J2%2FUntitled%3Ftype%3Dwhiteboard%26node-id%3D0%253A1%26t%3DivbdSEsSvyzC9S6G-1"
-            allowFullScreen
-          />
-          <h1 id="perceptual-hashes-section" className="text-4xl font-bold mb-6 text-black bg-clip-text mt-16">What are perceptual hashes?</h1>
+        <div className="w-full mt-4 px-4">
+          <h2 id="perceptual-hashes-section" className="text-4xl font-bold mb-6 text-black bg-clip-text mt-4">What are perceptual hashes?</h2>
           <p className="text-lg mb-4">
             Upload an original image and its edited version to compare their perceptual hashes. This will help you understand how closely the hashes match, indicating the degree of similarity between the two images.
           </p>
@@ -93,6 +86,27 @@ const Home = () => {
               comparisonData={image1Data}
             />
           </div>
+        </div>
+      </div>
+      <div className='flex flex-wrap -mx-4'>
+        <div className="w-full mt-12 px-4">
+          <h2 className="text-3xl font-bold mb-4">Performance trade-offs</h2>
+          <p className="text-lg mb-6">
+            We retrained the perceptual hashing head on multiple backbones of different models and hash sizes to trace the Pareto frontier between robustness and efficiency. This table shows evaluation time on 12 CPUs and different student-teacher distillations as backbones. Smaller backbones (e.g., Resnets) are faster and lighter for real-time use, while larger backbones (e.g., DinoV2) deliver higher robustness to edits at higher compute cost. The plot below summarizes the trade-off, and feel free to <a href="mailto:aayushg@mit.edu" className="underline">contact us</a> if you want access to other models on the Pareto frontier.
+          </p>
+          <img src="/paretofront.jpg" alt="Pareto frontier across backbones and hash sizes" className="w-full rounded-lg border border-gray-200 shadow-sm" />
+        </div>
+      </div>
+      <div className='flex flex-wrap -mx-4'>
+        <div className="w-full mt-24 px-4">
+          <h2 className="text-4xl font-bold mb-6 text-black bg-clip-text">How does the full Proteus system work?</h2>
+          <iframe
+            className="border border-opacity-10"
+            width="100%"
+            height="450"
+            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FiMlCZEIUktgXBWtHWPN3J2%2FUntitled%3Ftype%3Dwhiteboard%26node-id%3D0%253A1%26t%3DivbdSEsSvyzC9S6G-1"
+            allowFullScreen
+          />
         </div>
       </div>
     </div >
