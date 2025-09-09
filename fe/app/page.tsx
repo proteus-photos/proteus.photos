@@ -72,7 +72,7 @@ const Home = () => {
         <div className="w-full mt-4 px-4">
           <h2 id="perceptual-hashes-section" className="text-4xl font-bold mb-6 text-black bg-clip-text mt-4">What are perceptual hashes?</h2>
           <p className="text-lg mb-4">
-            Upload an original image and its edited version to compare their perceptual hashes. This will help you understand how closely the hashes match, indicating the degree of similarity between the two images.
+            Upload an original image and its edited version to compare their perceptual hashes, including our DinoHash algorithm and previous algorithms. This will help you understand how closely the hashes match, indicating the degree of similarity between the two images.
           </p>
           <div className="flex flex-row items-start justify-center mb-4 space-x-4">
             <CardWithTable 
