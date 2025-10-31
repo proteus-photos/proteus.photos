@@ -12,9 +12,13 @@ yarn install
 Then, run the development server:
 
 ```bash
-cd be
 cp .env.production .env.local
 yarn dev
+```
+
+To run the backend,
+```bash
+cd be
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
