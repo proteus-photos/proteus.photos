@@ -36,6 +36,14 @@ export default function Header() {
               </Link>
             ))}
             <a
+              href="https://proteus-fhpu.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Demo
+            </a>
+            <a
               href="https://github.com/proteus-photos"
               target="_blank"
               rel="noopener noreferrer"
@@ -80,6 +88,14 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="https://proteus-fhpu.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
+            >
+              Demo
+            </a>
             <a
               href="https://github.com/proteus-photos"
               target="_blank"
