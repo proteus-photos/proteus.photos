@@ -28,8 +28,45 @@ export default function APIPage() {
             <ul className="list-disc pl-6 space-y-1 text-gray-700">
               <li><a href="https://www.npmjs.com/package/@proteus-labs/dinohash" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">npm package</a></li>
               <li><a href="https://github.com/proteus-photos/dinohash-perceptual-hash" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">GitHub repository</a></li>
-              <li><a href="https://huggingface.co/backslashh/DINOHash" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">Hugging Face model</a></li>
+              <li><a href="https://huggingface.co/proteus-photos/DINOHash" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">Hugging Face model</a></li>
             </ul>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold mb-4">Hosted Inference API (Free)</h2>
+            <p className="text-gray-700 mb-4">
+              Don&apos;t want to run the model yourself? A free hosted endpoint is available on
+              Hugging Face Spaces (CPU). Send an image, get a perceptual hash back — no setup
+              and no per-request cost.
+            </p>
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+              <p className="text-blue-800">
+                <strong>Endpoint:</strong>{' '}
+                <a href="https://huggingface.co/spaces/Proteus-Computer-Use/DINOHash" target="_blank" rel="noopener noreferrer" className="underline">
+                  Proteus-Computer-Use/DINOHash (Space)
+                </a>
+              </p>
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold mb-2">Python (gradio_client)</h3>
+              <div className="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4">
+                <pre>{`from gradio_client import Client, handle_file
+
+client = Client("Proteus-Computer-Use/DINOHash")
+hex_hash, bits = client.predict(
+    handle_file("image.jpg"),
+    "dinov2-512bit (flagship)",  # model
+    api_name="/dinohash",
+)
+print(hex_hash)`}</pre>
+              </div>
+            </div>
+            <p className="text-gray-600 text-sm">
+              The endpoint runs on a free CPU instance and sleeps when idle (it wakes
+              automatically on the next request). For high throughput, self-host the ONNX
+              model with the npm package below.
+            </p>
           </section>
 
           <section className="mb-12">
@@ -46,7 +83,7 @@ const path = require('path');
 
 async function main() {
   // Download the model from Hugging Face
-  const modelUrl = 'https://huggingface.co/backslashh/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx';
+  const modelUrl = 'https://huggingface.co/proteus-photos/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx';
   const modelPath = path.join(__dirname, './models/dinov2_vits14_reg_96bit.onnx');
   
   // Download and load the model
@@ -73,7 +110,7 @@ main();`}</pre>
                 <pre>{`import { downloadModel, loadModel, hash } from '@proteus-labs/dinohash';
 import path from 'path';
 
-const modelUrl = 'https://huggingface.co/backslashh/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx';
+const modelUrl = 'https://huggingface.co/proteus-photos/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx';
 const modelPath = path.join(process.cwd(), './models/dinov2_vits14_reg_96bit.onnx');
 
 await downloadModel(modelUrl, modelPath);
@@ -149,7 +186,7 @@ const hashes = await hash(session, ['image1.jpg', 'image2.jpg']);`}</pre>
             
             <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
               <p className="text-blue-800">
-                <strong>Model:</strong> <a href="https://huggingface.co/backslashh/DINOHash" target="_blank" rel="noopener noreferrer" className="underline">backslashh/DINOHash</a>
+                <strong>Model:</strong> <a href="https://huggingface.co/proteus-photos/DINOHash" target="_blank" rel="noopener noreferrer" className="underline">proteus-photos/DINOHash</a>
               </p>
               <p className="text-blue-800 mt-2">
                 <strong>License:</strong> MIT
@@ -169,10 +206,54 @@ const hashes = await hash(session, ['image1.jpg', 'image2.jpg']);`}</pre>
               </p>
               <div className="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4">
                 <code className="text-sm break-all">
-                  https://huggingface.co/backslashh/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx
+                  https://huggingface.co/proteus-photos/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx
                 </code>
               </div>
             </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-semibold mb-4">Available Models</h2>
+            <p className="text-gray-700 mb-4">
+              The recommended DinoHash models output hash bits directly (one bit per output
+              logit — positive &rarr; 1, negative &rarr; 0), with the PCA projection baked into
+              the ONNX graph. Download by URL and pass to <code>loadModel</code>:
+            </p>
+            <div className="overflow-x-auto mb-6">
+              <table className="min-w-full text-sm border border-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="text-left p-3 border-b border-gray-200 font-semibold">Model</th>
+                    <th className="text-left p-3 border-b border-gray-200 font-semibold">Bits</th>
+                    <th className="text-left p-3 border-b border-gray-200 font-semibold">File</th>
+                  </tr>
+                </thead>
+                <tbody className="align-top">
+                  <tr>
+                    <td className="p-3 border-b border-gray-100">DINOv2 ViT-B/14 <span className="text-pink-600">(flagship)</span></td>
+                    <td className="p-3 border-b border-gray-100">512</td>
+                    <td className="p-3 border-b border-gray-100"><code className="text-xs break-all">proteus-photos/DINOHash/resolve/main/dinov2_vitb14_reg_512bit_dynamic.onnx</code></td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border-b border-gray-100">DINOv2 ViT-S/14</td>
+                    <td className="p-3 border-b border-gray-100">96</td>
+                    <td className="p-3 border-b border-gray-100"><code className="text-xs break-all">proteus-photos/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-gray-700 mb-2">
+              Prefix any file above with <code>https://huggingface.co/</code> to get the full
+              download URL.
+            </p>
+            <p className="text-gray-600 text-sm">
+              Additional backbones — DINOv3 (ViT-S/16, ViT-S/16+, ConvNeXt-Tiny/Small),
+              distilled students (ResNet, EfficientNet, MobileNet, ViT-Tiny, XCiT-Tiny) and
+              self-supervised baselines (DINO, MoCo, SwAV, MAE-Lite) — output raw image
+              embeddings (apply your own PCA / sign-binarization). All of them, plus the raw
+              training checkpoints, live in{' '}
+              <a href="https://huggingface.co/proteus-photos/DINOHash" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:underline">proteus-photos/DINOHash</a>.
+            </p>
           </section>
 
           <section className="mb-12">
@@ -190,7 +271,7 @@ async function hashImages(imagePaths) {
   }
   
   // Model configuration
-  const modelUrl = 'https://huggingface.co/backslashh/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx';
+  const modelUrl = 'https://huggingface.co/proteus-photos/DINOHash/resolve/main/dinov2_vits14_reg_96bit_dynamic.onnx';
   const modelPath = path.join(modelsDir, 'dinov2_vits14_reg_96bit.onnx');
   
   // Download model if not already present
@@ -268,7 +349,7 @@ function compareHashes(hash1, hash2) {
                   Use the model directly from Hugging Face Hub
                 </p>
                 <a 
-                  href="https://huggingface.co/backslashh/DINOHash" 
+                  href="https://huggingface.co/proteus-photos/DINOHash" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-pink-600 hover:underline text-sm font-medium"

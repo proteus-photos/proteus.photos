@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f472b6"/>
+      <stop offset="1" stop-color="#db2777"/>
+    </linearGradient>
+  </defs>
+  <!-- pink brand tile -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g)"/>
+  <!-- photo / image card -->
+  <rect x="12" y="12" width="40" height="40" rx="7" fill="#ffffff"/>
+  <!-- sun + mountains: signals this is about images -->
+  <circle cx="21" cy="21" r="2.6" fill="#f9a8d4"/>
+  <path d="M14 30 L21 24 L26 28 L33 22 L40 30 Z" fill="#fbcfe8"/>
+  <!-- fingerprint: the image's unique provenance signature -->
+  <g fill="none" stroke="#db2777" stroke-width="2.1" stroke-linecap="round">
+    <path d="M22 36 a10 9 0 0 1 20 0"/>
+    <path d="M25.5 36.5 a6.5 6 0 0 1 13 0"/>
+    <path d="M29 37 a3 3 0 0 1 6 0"/>
+    <path d="M22 36 v6"/>
+    <path d="M42 36 v6"/>
+    <path d="M25.5 36.5 v6"/>
+    <path d="M38.5 36.5 v6"/>
+    <path d="M29 37 v5.5"/>
+    <path d="M35 37 v5.5"/>
+    <path d="M32 39 v3.5"/>
+  </g>
+</svg>
