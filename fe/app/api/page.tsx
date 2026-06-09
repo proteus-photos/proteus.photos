@@ -42,8 +42,8 @@ export default function APIPage() {
             <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
               <p className="text-blue-800">
                 <strong>Endpoint:</strong>{' '}
-                <a href="https://huggingface.co/spaces/Proteus-Computer-Use/DINOHash" target="_blank" rel="noopener noreferrer" className="underline">
-                  Proteus-Computer-Use/DINOHash (Space)
+                <a href="https://huggingface.co/spaces/proteus-photos/DINOHash" target="_blank" rel="noopener noreferrer" className="underline">
+                  proteus-photos/DINOHash (Space)
                 </a>
               </p>
             </div>
@@ -53,7 +53,7 @@ export default function APIPage() {
               <div className="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4">
                 <pre>{`from gradio_client import Client, handle_file
 
-client = Client("Proteus-Computer-Use/DINOHash")
+client = Client("proteus-photos/DINOHash")
 hex_hash, bits = client.predict(
     handle_file("image.jpg"),
     "dinov2-512bit (flagship)",  # model
